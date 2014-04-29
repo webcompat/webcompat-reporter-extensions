@@ -14,7 +14,6 @@ var button = buttons.ActionButton({
   id: "webcompat-reporter",
   label: "Click to report an incompatible site at webcompat.com.",
   icon: {
-    "16": "./icon-16.png",
     "32": "./icon-32.png",
     "64": "./icon-64.png"
   },
