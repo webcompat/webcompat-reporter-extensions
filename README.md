@@ -4,6 +4,8 @@ Browser extensions for Chrome, Firefox (29+), Opera, and Safari that allow users
 
 *(If someone knows how to build something similar for Internet Explorer, file an issue and let's build it!)
 
+![Screenshots of browsers with installed extension](screenshots.jpg)
+
 ### Installation
 
 Find the packaged extension in the `bin` directory, and install in your browser (usually double-clicking or dropping into a browser window does the trick).
