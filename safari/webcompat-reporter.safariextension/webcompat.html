@@ -1,0 +1,30 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE html>
+<html>
+<title>webcompat.com reporter</title>
+<body>
+<script>
+var prefix = "http://webcompat.com/?open=1&url=";
+
+function reportIssue(event) {
+  if (event.command === "report-issue") {
+    var currentURL = safari.application.activeBrowserWindow.activeTab.url;
+    var newTab = safari.application.activeBrowserWindow.openTab().url = prefix + encodeURIComponent(currentURL);
+  }
+}
+
+function validate(event) {
+  if (event.command === "report-issue") {
+    // Disable the button if there is no URL loaded in the tab.
+    event.target.disabled = !event.target.browserWindow.activeTab.url;
+  }
+}
+
+safari.application.addEventListener("command", reportIssue, false);
+safari.application.addEventListener("validate", validate, false);
+</script>
+</body>
+</html>

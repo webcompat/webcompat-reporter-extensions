@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "webcompat.com reporter",
+  "description": "Click to report an incompatible site at webcompat.com.",
+  "version": "0.1",
+  "background": {"scripts": ["background.js"]},
+  "permissions": ["tabs"],
+  "icons": {"128": "icon128.png", "48": "icon48.png"},
+  "browser_action": {
+    "default_icon": "icon128.png",
+    "default_title": "Report this site to webcompat.com"
+  }
+}

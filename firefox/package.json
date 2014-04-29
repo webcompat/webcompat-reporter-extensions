@@ -1,0 +1,9 @@
+{
+  "name": "webcompat-reporter",
+  "title": "webcompat.com reporter",
+  "id": "jid1-mjpB54bRzP9Zxw",
+  "description": "Click the lightbulb icon to report an incompatible site at webcompat.com.",
+  "author": "Mike Taylor",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
