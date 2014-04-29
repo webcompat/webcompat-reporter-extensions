@@ -1,18 +1,18 @@
-# Webcompat.com Reporter browser add-ons
+# Webcompat.com Reporter browser extensions
 
-Browser add-ons for Chrome, Firefox, Opera, and Safari that allow users to click on a button in the browser chrome to report a web compatibility issue at webcompat.com.
+Browser extensions for Chrome, Firefox, Opera, and Safari that allow users to click on a button in the browser chrome to report a web compatibility issue at webcompat.com.
 
 *(If someone knows how to build something similar for Internet Explorer, file an issue and let's build it!)
 
 ### Installation
 
-Find the packaged add-ons in the `bin` directory, and install in your browser (usually double-clicking or dropping into a browser window does the trick).
+Find the packaged extension in the `bin` directory, and install in your browser (usually double-clicking or dropping into a browser window does the trick).
 
-Links to add-on sites coming soon.
+Links to extension sites coming soon.
 
 ### Privacy
 
-By clicking on the add-on button, the user asks the browser to send the URL of a website to webcompat.com (in order to report an issue) in a new tab. No information is collected besides that which gets submitted by the user as a bug report.
+By clicking on the extension button, the user asks the browser to send the URL of a website to webcompat.com (in order to report an issue) in a new tab. No information is collected besides that which gets submitted by the user as a bug report.
 
 ### License
 
