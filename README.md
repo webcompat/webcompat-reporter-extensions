@@ -2,7 +2,7 @@
 
 Browser extensions for Chrome, Firefox (29+), Opera, and Safari that allow users to click on a button in the browser chrome to report a web compatibility issue at webcompat.com.
 
-*(If someone knows how to build something similar for Internet Explorer, file an issue and let's build it!)
+*(If someone knows how to build something similar for Internet Explorer, please file an issue)
 
 ![Screenshots of browsers with installed extension](screenshots.jpg)
 
@@ -11,6 +11,18 @@ Browser extensions for Chrome, Firefox (29+), Opera, and Safari that allow users
 Find the packaged extension in the `bin` directory, and install in your browser (usually double-clicking or dropping into a browser window does the trick).
 
 Links to extension sites coming soon.
+
+### Bookmarklet
+
+Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Drag the following link to your favorites or bookmark bar:
+
+<a title="Site Issue" href="javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())">Site Issue</a>
+
+Or manually copy and paste the code somewhere it will be useful:
+
+```
+javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())
+```
 
 ### Privacy
 
