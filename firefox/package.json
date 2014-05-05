@@ -5,7 +5,7 @@
   "description": "Click the lightbulb icon to report an incompatible site at webcompat.com.",
   "author": "Mike Taylor",
   "license": "MPL 2.0",
-  "version": "0.1",
+  "version": "0.1.1",
   "icon": "data/icon-32.png",
   "icon64": "data/icon-64.png"
 }

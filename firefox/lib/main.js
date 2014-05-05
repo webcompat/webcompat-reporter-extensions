@@ -12,7 +12,7 @@ function sendURL(state) {
 
 var button = buttons.ActionButton({
   id: "webcompat-reporter",
-  label: "Click to report an incompatible site at webcompat.com.",
+  label: "Site Issue",
   icon: {
     "32": "./icon-32.png",
     "64": "./icon-64.png"
