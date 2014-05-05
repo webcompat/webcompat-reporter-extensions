@@ -16,8 +16,9 @@ Links to extension sites coming soon.
 
 Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Drag the following image link to your favorites or bookmark bar:
 
-![firefox/data/icon-64.png](javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}()))
-
+<a title="Site Issue" href="(javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}()))">
+  <img alt="Site Issue" src="firefox/data/img-64.png">
+</a>
 Or manually copy and paste the code somewhere it will be useful:
 
 ```
