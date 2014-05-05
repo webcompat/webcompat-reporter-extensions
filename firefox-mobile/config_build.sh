@@ -2,7 +2,7 @@
 
 # Build config for the build script, build.sh. Look there for more info.
 
-APP_NAME=webcompat-reporter
+APP_NAME=webcompat-reporter-mobile
 CHROME_PROVIDERS=
 CLEAN_UP=1
 ROOT_FILES="bootstrap.js icon.png"
