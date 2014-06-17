@@ -4,7 +4,7 @@
     <em:id>webcompat-reporter-for-mobile@webcompat.com</em:id>
     <em:type>2</em:type>
     <em:name>Webcompat.com mobile reporter</em:name>
-    <em:version>0.1.2</em:version>
+    <em:version>0.2</em:version>
     <em:bootstrap>true</em:bootstrap>
     <em:description>Report site compatibility issues on webcompat.com.</em:description>
     <em:creator>Mike Taylor</em:creator>
@@ -13,7 +13,7 @@
       <Description>
         <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
         <em:minVersion>22.0</em:minVersion>
-        <em:maxVersion>32.*</em:maxVersion>
+        <em:maxVersion>33.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>
