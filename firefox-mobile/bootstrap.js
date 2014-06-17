@@ -12,9 +12,47 @@ function reportIssue(window) {
   tab = window.BrowserApp.addTab(prefix + url);
 }
 
+let desktopModeListener = {
+  win: undefined,
+  init: function(window) {
+    this.win = window;
+    Services.obs.addObserver(this, "DesktopMode:Change", false);
+  },
+  uninit: function() {
+    Services.obs.removeObserver(this, "DesktopMode:Change");
+  },
+  observe: function(subject, topic, data) {
+    if (topic == "DesktopMode:Change") {
+      let args = JSON.parse(data);
+      if (args.desktopMode === true) {
+        this.showMessage();
+      }
+    }
+  },
+  showMessage: function() {
+    let buttons = [{
+        label: "Yes",
+        callback: () => reportIssue(this.win)
+      }, {
+        label: "No thanks",
+        callback: () => {}
+    }];
+    let message = "Would you like to report an issue with the mobile site at webcompat.com?";
+    let options = {
+      timeout: 3000,
+      persistence: 0
+    };
+
+    this.win.NativeWindow.doorhanger.show(message, "webcompat-prompt",
+      buttons, this.win.BrowserApp.selectedTab.id, options);
+  }
+};
+
 function loadIntoWindow(window) {
   if (!window)
     return;
+
+  desktopModeListener.init(window);
 
   menuItem = window.NativeWindow.menu.add({
     name: "Report Site Issue",
@@ -27,6 +65,7 @@ function unloadFromWindow(window) {
   if (!window)
     return;
 
+  desktopModeListener.uninit();
   window.NativeWindow.menu.remove(menuItem);
   menuItem = null;
 }
