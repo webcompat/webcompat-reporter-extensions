@@ -85,11 +85,8 @@ var windowListener = {
     }, false);
   },
 
-  onCloseWindow: function(aWindow) {
-  },
-
-  onWindowTitleChange: function(aWindow, aTitle) {
-  }
+  onCloseWindow: function(aWindow) {},
+  onWindowTitleChange: function(aWindow, aTitle) {}
 };
 
 function startup(aData, aReason) {
@@ -121,8 +118,5 @@ function shutdown(aData, aReason) {
   }
 }
 
-function install(aData, aReason) {
-}
-
-function uninstall(aData, aReason) {
-}
+function install(aData, aReason) {}
+function uninstall(aData, aReason) {}
