@@ -1,6 +1,4 @@
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 Cu.import("resource://gre/modules/Services.jsm");
 
@@ -43,8 +41,7 @@ let desktopModeListener = {
       persistence: 0
     };
 
-    this.win.NativeWindow.doorhanger.show(message, "webcompat-prompt",
-      buttons, this.win.BrowserApp.selectedTab.id, options);
+    this.win.NativeWindow.doorhanger.show(message, "webcompat-prompt", buttons, this.win.BrowserApp.selectedTab.id, options);
   }
 };
 
