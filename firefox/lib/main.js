@@ -6,8 +6,18 @@ let tabs = require("sdk/tabs");
 let buttons = require('sdk/ui/button/action');
 let prefix = "http://webcompat.com/?open=1&url=";
 
-function sendURL(state) {
-  tabs.open(prefix + encodeURIComponent(tabs.activeTab.url));
+function sendURL() {
+  var url = tabs.activeTab.url;
+  if (isReportableUrl(url)) {
+    tabs.open(prefix + encodeURIComponent(url));
+  }
+}
+
+function isReportableUrl(url) {
+  return url && !(url.startsWith("about") ||
+                  url.startsWith("chrome") ||
+                  url.startsWith("file") ||
+                  url.startsWith("resource"));
 }
 
 var button = buttons.ActionButton({
