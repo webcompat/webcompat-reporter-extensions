@@ -9,7 +9,7 @@
   "permissions": [
     "tabs",
     "activeTab",
-    "http://webcompat.com/"
+    "https://webcompat.com/"
   ],
   "icons": {
     "128": "icon128.png",
