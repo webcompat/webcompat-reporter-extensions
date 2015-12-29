@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Mike Taylor</string>
 	<key>Builder Version</key>
-	<string>9537.75.14</string>
+	<string>11601.3.9</string>
 	<key>CFBundleDisplayName</key>
 	<string>webcompat-reporter</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.2</string>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>0.2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -41,10 +41,17 @@
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict/>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>sendScreenshot.js</string>
+			</array>
+		</dict>
 	</dict>
 	<key>Description</key>
 	<string>Click the lightbulb icon to report an incompatible site at webcompat.com.</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -58,6 +65,6 @@
 		</dict>
 	</dict>
 	<key>Website</key>
-	<string>http://webcompat.com</string>
+	<string>https://webcompat.com</string>
 </dict>
 </plist>

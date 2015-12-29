@@ -7,12 +7,24 @@
 <title>webcompat.com reporter</title>
 <body>
 <script>
-var prefix = "http://webcompat.com/?open=1&url=";
+var prefix = "https://webcompat.com/?open=1&url=";
+var screenShotData = "";
 
 function reportIssue(event) {
   if (event.command === "report-issue") {
-    var currentURL = safari.application.activeBrowserWindow.activeTab.url;
-    var newTab = safari.application.activeBrowserWindow.openTab().url = prefix + encodeURIComponent(currentURL);
+    var activeTab = safari.application.activeBrowserWindow.activeTab;
+    var currentURL = activeTab.url;
+
+    activeTab.visibleContentsAsDataURL(function(response) {
+      screenShotData = response;
+      safari.application.activeBrowserWindow.openTab().url = prefix + encodeURIComponent(currentURL);
+    });
+  }
+}
+
+function sendScreenshot(event) {
+  if (event.name === "request-screenshot") {
+    event.target.page.dispatchMessage("screenshot-data", screenShotData);
   }
 }
 
@@ -25,6 +37,7 @@ function validate(event) {
 
 safari.application.addEventListener("command", reportIssue, false);
 safari.application.addEventListener("validate", validate, false);
+safari.application.addEventListener("message", sendScreenshot, false);
 </script>
 </body>
 </html>
