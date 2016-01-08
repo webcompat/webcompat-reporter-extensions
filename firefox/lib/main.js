@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-let buttons = require("sdk/ui/button/action");
-let pageMod = require('sdk/page-mod')
-let tabs = require("sdk/tabs");
-let tabUtils = require("sdk/tabs/utils");
+let buttons     = require("sdk/ui/button/action");
+let pageMod     = require('sdk/page-mod')
+let tabs        = require("sdk/tabs");
+let tabUtils    = require("sdk/tabs/utils");
 let { viewFor } = require("sdk/view/core");
 
 const DOMAIN = "https://webcompat.com/";
@@ -51,7 +51,6 @@ function getTabScreenshot(tab) {
     ctx.scale(scale, scale);
   }
 
-  // TODO: if scale is bigger or equal to 2, try 2.
   setScale(dpr);
   ctx.drawWindow(win, x, y, w, h, '#ffffff');
 
