@@ -2,14 +2,15 @@
   "manifest_version": 2,
   "name": "webcompat.com reporter",
   "description": "Click to report an incompatible site at webcompat.com, and optionally upload a screenshot.",
-  "version": "0.2",
+  "version": "0.3",
   "background": {
     "scripts": ["background.js"]
   },
   "permissions": [
     "tabs",
     "activeTab",
-    "https://webcompat.com/"
+    "https://webcompat.com/",
+    "<all_urls>"
   ],
   "icons": {
     "128": "icon128.png",
