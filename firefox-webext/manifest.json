@@ -5,7 +5,7 @@
   "version": "0.3",
   "applications": {
     "gecko": {
-      "id": "miket@mozilla.com",
+      "id": "jid1-mjpB54bRzP9Zxw@jetpack",
       "strict_min_version": "49.0.0"
     }
   },
