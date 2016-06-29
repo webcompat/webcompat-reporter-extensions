@@ -24,6 +24,11 @@ javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeU
 
 By clicking on the extension button, the user asks the browser to send the URL of a website to webcompat.com (in order to report an issue) in a new tab. No information is collected besides that which gets submitted by the user as a bug report.
 
+If you choose to upload a screenshot or other image, it will be publicly accessible. Please do not include any confidential or personal information in the screenshot.
+
+The User Agent HTTP header that your browser sends will be recorded in the bug report, if you choose to report a bug, but is hidden by default.
+
+
 ### License
 
 This Source Code Form is subject to the terms of the Mozilla Public
