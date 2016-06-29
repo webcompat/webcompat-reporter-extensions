@@ -2,3 +2,4 @@
 *.cer
 *.xpi
 bin/
+*/node_modules/

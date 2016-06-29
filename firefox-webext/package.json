@@ -1,0 +1,22 @@
+{
+  "name": "firefox-webext",
+  "version": "0.3.0",
+  "description": "Web Extension version of the Firefox WebCompat reporter add-on.",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/webcompat/webcompat-reporter-extensions.git"
+  },
+  "author": "Mike Taylor",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions/issues"
+  },
+  "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
+  "devDependencies": {
+    "web-ext": "^1.1.0"
+  }
+}
