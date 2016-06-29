@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "webcompat.com reporter",
   "description": "Report website compatibility issues at webcompat.com",
-  "version": "0.2",
+  "version": "0.3",
   "applications": {
     "gecko": {
       "id": "miket@mozilla.com",
-      "strict_min_version": "47.0.0"
+      "strict_min_version": "49.0.0"
     }
   },
   "background": {
