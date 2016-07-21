@@ -30,6 +30,7 @@ let desktopModeListener = {
   showMessage: function() {
     let buttons = [{
         label: "Yes",
+        positive: true,
         callback: () => reportIssue(this.win)
       }, {
         label: "No thanks",
