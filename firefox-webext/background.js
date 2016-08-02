@@ -81,14 +81,12 @@ function getIssues(pages) {
 }
 
 var searchIssues = function(domain, tab){
-  console.log(domain);
   var count = 0;
   for (var i = 0; i < issuesList.length; i++) {
    var str = issuesList[i].body.toString();
    if (str.indexOf(domain) !== -1){
      count++;
    }
-   console.log(count);
   }
   if (count > 0){
    chrome.browserAction.setBadgeText({text: count.toString(), tabId: tab});
