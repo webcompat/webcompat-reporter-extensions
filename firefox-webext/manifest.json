@@ -13,6 +13,7 @@
     "scripts": ["background.js"]
   },
   "permissions": [
+    "storage",
     "tabs",
     "activeTab",
     "https://webcompat.com/",
@@ -25,6 +26,7 @@
     "128": "icon128.png"
   },
   "browser_action": {
+    "browser_style": true,
     "default_icon": {
       "19": "icon32.png",
       "32": "icon32.png",
@@ -33,5 +35,11 @@
       "128": "icon128.png"
     },
     "default_title": "Report website compatibility issues at webcompat.com"
+  },
+  "content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content-script.js"]
   }
+]
 }
