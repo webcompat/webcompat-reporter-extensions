@@ -2,25 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var pre = 'https://api.github.com/repos/webcompat/web-bugs';
-var ext1 = '/issues?state=open&page=';
-var ext2 = '&per_page=100';
+var fetchURL = 'https://api.github.com/repos/webcompat/web-bugs/issues?state=open&page=1&per_page=100';
 var issuesList = [];
 var requestIssues = [];
-var requestsTotal = 0;
-var requestsCount = 0;
+var ignoreList = ['about'];
 var ts = Math.round(new Date().getTime() / 1000);
 var tsRefresh = 0;
 var prefix = 'https://webcompat.com/?open=1&url=';
 var screenshotData = '';
-
-function handleMessage(request, sender, sendResponse) {
-  if (checkRefresh()) {
-    setTimeout(function(){ searchIssues(request.message, sender.tab.id);}, 5000);
-  } else {
-    searchIssues(request.message, sender.tab.id);
-  }
-}
 
 function addRefresh(now) {
   return (now + (24 * 3600));
@@ -31,7 +20,7 @@ function checkRefresh (){
   if (issuesList.length == 0 || tsRefresh <= now) {
     console.log('Data needs refresh.');
     tsRefresh = addRefresh(now);
-    getIssuesCount();
+    getIssues();
     return true;
   } else {
     console.log('Data up to date.');
@@ -39,48 +28,58 @@ function checkRefresh (){
   }
 }
 
-function getIssuesCount() {
+function getIssues() {
   var now = Math.round(new Date().getTime() / 1000);
   tsRefresh = addRefresh(now);
-  requestCount.open('GET', pre, true);
-  requestCount.send(null);
+  fetchBatch(fetchURL);
 }
 
-var requestCount = new XMLHttpRequest();
-requestCount.onreadystatechange = function() {
-  if (requestCount.readyState == XMLHttpRequest.DONE) {
-    var obj = JSON.parse(requestCount.responseText);
-    var n = parseInt(obj.open_issues);
-    if (n >= 100){
-      var t = parseInt(n.toString().substr(0,1))+1;
-      getIssues(t);
+function fetchBatch(url){
+  fetch(url).then(function(response) {
+  	return response;
+  }).then(function(obj) {
+    Promise.resolve(obj.json()).then(function (list) {
+      issuesList.push.apply(issuesList, list);
+    }).catch(function(err) {
+      console.log(err);
+    });
+    return obj.headers.get('Link');
+  }).then(function(link) {
+    var headers = parseHeader(link);
+    if (headers.next) {
+      fetchBatch(headers.next);
     } else {
-      getIssues(1);
+      storeIssues();
+    }
+  }).catch(function(err) {
+  	console.log(err);
+  });
+}
+
+function parseHeader(linkHeader) {
+  var result = {};
+  var entries = linkHeader.split(',');
+  var relsRegExp = /\brel="?([^"]+)"?\s*;?/;
+  var keysRegExp = /(\b[0-9a-z\.-]+\b)/g;
+  var sourceRegExp = /^<(.*)>/;
+
+  for (var i = 0; i < entries.length; i++) {
+    var entry = entries[i].trim();
+    var rels = relsRegExp.exec(entry);
+    if (rels) {
+      var keys = rels[1].match(keysRegExp);
+      var source = sourceRegExp.exec(entry)[1];
+      var k;
+      var kLength = keys.length;
+      for (k = 0; k < kLength; k += 1) {
+        result[keys[k]] = source;
+      }
     }
   }
+  return result;
 }
 
-function getIssues(pages) {
-  requestsTotal = pages; requestCount = 0;
-  for (var i = 1; i <= pages; i++) {
-   var api = pre + ext1 + i + ext2;
-   requestIssues[i] = new XMLHttpRequest();
-   requestIssues[i].onreadystatechange = function(index) {
-     return function() {
-       if (requestIssues[index].readyState == XMLHttpRequest.DONE) {
-         var obj = JSON.parse(requestIssues[index].responseText);
-         issuesList.push.apply(issuesList, obj);
-         requestCount++;
-         if (requestsTotal == requestCount) storeIssues();
-       }
-     };
-   }(i);
-   requestIssues[i].open('GET', api, true);
-   requestIssues[i].send(null);
-  }
-}
-
-var searchIssues = function(domain, tab){
+function searchIssues(domain, tab){
   var count = 0;
   for (var i = 0; i < issuesList.length; i++) {
    var str = issuesList[i].body.toString();
@@ -89,9 +88,9 @@ var searchIssues = function(domain, tab){
    }
   }
   if (count > 0){
-   chrome.browserAction.setBadgeText({text: count.toString(), tabId: tab});
+    chrome.browserAction.setBadgeText({text: count.toString(), tabId: tab});
   } else {
-   chrome.browserAction.setBadgeText({text: '', tabId: tab});
+    chrome.browserAction.setBadgeText({text: '', tabId: tab});
   }
 }
 
@@ -123,7 +122,7 @@ function storageCheck(item){
     console.log(chrome.runtime.lastError);
   } else {
     if (Object.keys(item).length === 0 && item.constructor === Object){
-      getIssuesCount(); // if nothing in storage fetch the list from github
+      getIssues(); // if nothing in storage fetch the list from github
     } else {
       issuesList = item.issuesList;
       tsRefresh = item.tsRefresh;
@@ -132,6 +131,34 @@ function storageCheck(item){
     }
   }
 }
-chrome.runtime.onMessage.addListener(handleMessage);
+
+function extractDomain(url) {
+   var domain;
+   if (url.indexOf("://") > -1) {
+     domain = url.split('/')[2];
+   }
+   else {
+     domain = url.split('/')[0];
+   }
+   domain = domain.split(':')[0];
+   return domain;
+}
+
+function navigationChange(details) {
+  var url = extractDomain(details.url);
+  var tab = details.tabId;
+  var parentFrameId = details.parentFrameId;
+  if (parentFrameId == -1){
+    if (ignoreList.indexOf(url) == -1){
+      if (checkRefresh()) {
+        setTimeout(function(){ searchIssues(url, tab); }, 5000);
+      } else {
+        searchIssues(url, tab);
+      }
+    }
+  }
+}
+
+chrome.webNavigation.onCompleted.addListener(navigationChange);
 chrome.browserAction.setBadgeBackgroundColor({ color: [64, 64, 64, 255] });
 chrome.storage.local.get(storageCheck);
