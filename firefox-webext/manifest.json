@@ -13,6 +13,8 @@
     "scripts": ["background.js"]
   },
   "permissions": [
+    "storage",
+    "webNavigation",
     "tabs",
     "activeTab",
     "https://webcompat.com/",
@@ -25,6 +27,7 @@
     "128": "icon128.png"
   },
   "browser_action": {
+    "browser_style": true,
     "default_icon": {
       "19": "icon32.png",
       "32": "icon32.png",
