@@ -15,6 +15,7 @@
   "permissions": [
     "tabs",
     "activeTab",
+    "contextMenus",
     "https://webcompat.com/",
     "<all_urls>"
   ],
