@@ -5,7 +5,14 @@
 var prefix = 'https://webcompat.com/?open=1&url=';
 var screenshotData = '';
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.contextMenus.create({
+  id: "webcompat-contextmenu",
+  title: "Report site issue",
+  contexts: ["all"]
+});
+
+
+function reportIssue (tab) {
   chrome.tabs.captureVisibleTab({format: 'png'}, function(res) {
     screenshotData = res;
     chrome.tabs.query({currentWindow: true, active: true}, function(tab) {
@@ -16,4 +23,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       });
     });
   });
-});
+}
+
+chrome.contextMenus.onClicked.addListener(function (tab) { reportIssue(tab) });
+chrome.browserAction.onClicked.addListener(function (tab) { reportIssue(tab) });
