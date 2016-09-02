@@ -19,5 +19,12 @@
   "browser_action": {
     "default_icon": "icon128.png",
     "default_title": "Report Site Issue"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://webcompat.com/"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
