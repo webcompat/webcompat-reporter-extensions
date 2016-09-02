@@ -12,6 +12,13 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://webcompat.com/"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
   "permissions": [
     "tabs",
     "activeTab",
