@@ -11,7 +11,6 @@ chrome.contextMenus.create({
   contexts: ["all"]
 });
 
-
 function reportIssue (tab) {
   chrome.tabs.captureVisibleTab({format: 'png'}, function(res) {
     screenshotData = res;
@@ -25,5 +24,5 @@ function reportIssue (tab) {
   });
 }
 
-chrome.contextMenus.onClicked.addListener(function (tab) { reportIssue(tab) });
-chrome.browserAction.onClicked.addListener(function (tab) { reportIssue(tab) });
+chrome.contextMenus.onClicked.addListener(reportIssue);
+chrome.browserAction.onClicked.addListener(reportIssue);

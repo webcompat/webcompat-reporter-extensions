@@ -25,5 +25,5 @@ function reportIssue (tab) {
   });
 }
 
-chrome.contextMenus.onClicked.addListener(function (tab) { reportIssue(tab) });
-chrome.browserAction.onClicked.addListener(function (tab) { reportIssue(tab) });
+chrome.contextMenus.onClicked.addListener(reportIssue);
+chrome.browserAction.onClicked.addListener(reportIssue);
