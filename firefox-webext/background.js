@@ -4,6 +4,7 @@
 
 var prefix = 'https://webcompat.com/?open=1&url=';
 var screenshotData = '';
+var reporterID = 'addon-reporter-firefox';
 
 chrome.contextMenus.create({
   id: "webcompat-contextmenu",
@@ -26,3 +27,17 @@ function reportIssue (tab) {
 
 chrome.contextMenus.onClicked.addListener(reportIssue);
 chrome.browserAction.onClicked.addListener(reportIssue);
+
+// Add a custom header when the user is reporting an issue.
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    details.requestHeaders.push({
+      name: 'X-Reported-With',
+      value: `${reporterID}`
+    });
+
+    return {requestHeaders: details.requestHeaders};
+  },
+  {urls: ["https://webcompat.com/?open=1&*"]},
+  ['blocking', 'requestHeaders']
+);
