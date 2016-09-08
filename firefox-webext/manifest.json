@@ -23,6 +23,8 @@
     "tabs",
     "activeTab",
     "contextMenus",
+    "webRequest",
+    "webRequestBlocking",
     "https://webcompat.com/",
     "<all_urls>"
   ],
