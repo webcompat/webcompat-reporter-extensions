@@ -4,13 +4,13 @@
 
 var prefix = 'https://webcompat.com/?open=1&url=';
 var screenshotData = '';
+var reporterID = 'addon-reporter-firefox';
 
 chrome.contextMenus.create({
   id: "webcompat-contextmenu",
   title: "Report site issue",
   contexts: ["all"]
 });
-
 
 function reportIssue (tab) {
   chrome.tabs.captureVisibleTab({format: 'png'}, function(res) {
@@ -25,5 +25,19 @@ function reportIssue (tab) {
   });
 }
 
-chrome.contextMenus.onClicked.addListener(function (tab) { reportIssue(tab) });
-chrome.browserAction.onClicked.addListener(function (tab) { reportIssue(tab) });
+chrome.contextMenus.onClicked.addListener(reportIssue);
+chrome.browserAction.onClicked.addListener(reportIssue);
+
+// Add a custom header when the user is reporting an issue.
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    details.requestHeaders.push({
+      name: 'X-Reported-With',
+      value: `${reporterID}`
+    });
+
+    return {requestHeaders: details.requestHeaders};
+  },
+  {urls: ["https://webcompat.com/?open=1&*"]},
+  ['blocking', 'requestHeaders']
+);
