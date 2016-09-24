@@ -3,3 +3,5 @@
 *.xpi
 bin/
 */node_modules/
+*.log
+*/*.log
