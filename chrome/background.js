@@ -6,19 +6,19 @@ var prefix = 'https://webcompat.com/?open=1&url=';
 var screenshotData = '';
 
 chrome.contextMenus.create({
-  id: "webcompat-contextmenu",
-  title: "Report site issue",
-  contexts: ["all"]
+  id: 'webcompat-contextmenu',
+  title: 'Report site issue',
+  contexts: ['all']
 });
 
 
-function reportIssue (tab) {
+function reportIssue(tab) {
   chrome.tabs.captureVisibleTab({format: 'png'}, function(res) {
     screenshotData = res;
     chrome.tabs.query({currentWindow: true, active: true}, function(tab) {
-      chrome.tabs.create({ "url": prefix + encodeURIComponent(tab[0].url)}, function(tab) {
+      chrome.tabs.create({ 'url': prefix + encodeURIComponent(tab[0].url)}, function(tab) {
         chrome.tabs.executeScript({
-          code: 'window.postMessage("' + screenshotData + '", "*")'
+          code: `window.postMessage("${screenshotData}", "*")`
         });
       });
     });

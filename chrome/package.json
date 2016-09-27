@@ -1,7 +1,7 @@
 {
-  "name": "firefox-webext",
+  "name": "chrome",
   "version": "0.4.0",
-  "description": "Web Extension version of the Firefox WebCompat reporter add-on.",
+  "description": "Click to report an incompatible site at webcompat.com, and optionally upload a screenshot.",
   "author": "webcompat.com contributors",
   "main": "background.js",
   "scripts": {
