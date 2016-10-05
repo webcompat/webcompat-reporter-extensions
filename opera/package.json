@@ -17,9 +17,7 @@
   },
   "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
   "devDependencies": {
-    "jpm": "^1.1.4",
-    "eslint": "^3.4.0",
-    "web-ext": "^1.1.0"
+    "eslint": "^3.4.0"
   },
   "license": "MPL-2.0"
 }
