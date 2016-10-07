@@ -20,10 +20,6 @@ Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.o
 javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())
 ```
 
-### Note
-
-The [`firefox`](https://github.com/webcompat/webcompat-reporter-extensions/tree/master/firefox) add-on is deprecated in favor of [`firefox-webext`](https://github.com/webcompat/webcompat-reporter-extensions/tree/master/firefox-webext). It will probably be removed at some future date.
-
 ### Privacy
 
 By clicking on the extension button, the user asks the browser to send the URL of a website to webcompat.com (in order to report an issue) in a new tab. No information is collected besides that which gets submitted by the user as a bug report.
