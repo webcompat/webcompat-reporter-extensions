@@ -25,5 +25,28 @@ function reportIssue(tab) {
   });
 }
 
+function enableOrDisable(tabId, changeInfo, tab) {
+  function isReportableURL(url) {
+    return url && !(url.startsWith("about")     ||
+                    url.startsWith("chrome")    ||
+                    url.startsWith("file")      ||
+                    url.startsWith("resource")  ||
+                    url.startsWith("view-source"));
+  }
+
+  if (changeInfo.status == "loading" && isReportableURL(tab.url)) {
+    chrome.browserAction.enable(tabId);
+  } else if (changeInfo.status == "loading" && !isReportableURL(tab.url)) {
+    chrome.browserAction.disable(tabId);
+  }
+}
+
+chrome.tabs.onCreated.addListener((tab) => {
+  // disable all new tabs until they've loaded and we know
+  // they have reportable URLs
+  chrome.browserAction.disable(tab.tabId);
+});
+
+chrome.tabs.onUpdated.addListener(enableOrDisable);
 chrome.contextMenus.onClicked.addListener(reportIssue);
 chrome.browserAction.onClicked.addListener(reportIssue);
