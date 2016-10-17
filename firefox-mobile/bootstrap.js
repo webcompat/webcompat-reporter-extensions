@@ -3,7 +3,7 @@ const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 let menuItem, tab, url;
-let prefix = "http://webcompat.com/issues/new?url=";
+let prefix = "https://webcompat.com/issues/new?url=";
 
 function reportIssue(window) {
   url = encodeURIComponent(window.BrowserApp.selectedTab.browser.currentURI.spec);
