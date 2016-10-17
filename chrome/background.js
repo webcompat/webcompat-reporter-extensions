@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var prefix = 'https://webcompat.com/?open=1&url=';
+var prefix = 'https://webcompat.com/issues/new?url=';
 var screenshotData = '';
 
 chrome.contextMenus.create({
