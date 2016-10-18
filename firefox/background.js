@@ -64,6 +64,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 
     return {requestHeaders: details.requestHeaders};
   },
-  {urls: ['https://webcompat.com/issues/new']},
+  {urls: ['https://webcompat.com/issues/new?url=*']},
   ['blocking', 'requestHeaders']
 );
