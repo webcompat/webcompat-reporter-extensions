@@ -4,6 +4,7 @@
 
 var prefix = 'https://webcompat.com/issues/new?url=';
 var screenshotData = '';
+var reporterID = 'addon-reporter-opera';
 
 chrome.contextMenus.create({
   id: 'webcompat-contextmenu',
@@ -25,5 +26,42 @@ function reportIssue(tab) {
   });
 }
 
+function enableOrDisable(tabId, changeInfo, tab) {
+  function isReportableURL(url) {
+    return url && !(url.startsWith("about")     ||
+                    url.startsWith("chrome")    ||
+                    url.startsWith("file")      ||
+                    url.startsWith("resource")  ||
+                    url.startsWith("view-source"));
+  }
+
+  if (changeInfo.status == "loading" && isReportableURL(tab.url)) {
+    chrome.browserAction.enable(tabId);
+  } else if (changeInfo.status == "loading" && !isReportableURL(tab.url)) {
+    chrome.browserAction.disable(tabId);
+  }
+}
+
+chrome.tabs.onCreated.addListener((tab) => {
+  // disable all new tabs until they've loaded and we know
+  // they have reportable URLs
+  chrome.browserAction.disable(tab.tabId);
+});
+
+chrome.tabs.onUpdated.addListener(enableOrDisable);
 chrome.contextMenus.onClicked.addListener(reportIssue);
 chrome.browserAction.onClicked.addListener(reportIssue);
+
+// Add a custom header when the user is reporting an issue.
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    details.requestHeaders.push({
+      name: 'X-Reported-With',
+      value: `${reporterID}`
+    });
+
+    return {requestHeaders: details.requestHeaders};
+  },
+  {urls: ['https://webcompat.com/issues/new']},
+  ['blocking', 'requestHeaders']
+);
