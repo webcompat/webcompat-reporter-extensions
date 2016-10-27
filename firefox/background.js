@@ -34,10 +34,6 @@ function enableOrDisable(tabId, changeInfo, tab) {
                     url.startsWith("view-source"));
   }
 
-  if (changeInfo.status == "loading") {
-    console.log("loading");
-  }
-
   if (changeInfo.status == "loading" && isReportableURL(tab.url)) {
     chrome.browserAction.enable(tabId);
   } else if (changeInfo.status == "loading" && !isReportableURL(tab.url)) {
