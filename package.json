@@ -1,0 +1,27 @@
+{
+  "title": "Webcompat reporter extensions",
+  "name": "webcompat-reporter-extensions",
+  "author": {
+    "name": "webcompat.com contributors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions.git"
+  },
+  "scripts": {
+    "eslint": "npm run chrome-eslint && npm run firefox-eslint && npm run firefox-mobile-eslint && npm run opera-eslint && npm run safari-eslint",
+    "chrome-eslint": "cd chrome && eslint -c ../.eslintrc --fix background.js",
+    "firefox-eslint": "cd firefox && eslint -c ../.eslintrc --fix background.js",
+    "firefox-mobile-eslint": "cd firefox-mobile && eslint -c ../.eslintrc --fix bootstrap.js",
+    "opera-eslint": "cd opera && eslint -c ../.eslintrc --fix background.js",
+    "safari-eslint": "cd safari/webcompat-reporter.safariextension && eslint -c ../../.eslintrc --fix sendScreenshot.js"
+  },
+  "bugs": {
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions/issues"
+  },
+  "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
+  "devDependencies": {
+    "eslint": "^3.4.0"
+  },
+  "license": "MPL-2.0"
+}
