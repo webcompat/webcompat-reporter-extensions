@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "webcompat.com reporter",
   "description": "Report website compatibility issues at webcompat.com",
-  "version": "0.4",
+  "version": "0.5",
   "applications": {
     "gecko": {
       "id": "jid1-mjpB54bRzP9Zxw@jetpack",
@@ -23,8 +23,6 @@
     "tabs",
     "activeTab",
     "contextMenus",
-    "webRequest",
-    "webRequestBlocking",
     "https://webcompat.com/",
     "<all_urls>"
   ],
