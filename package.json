@@ -1,0 +1,21 @@
+{
+  "name": "webcompat-reporter-extensions",
+  "description": "Click to report an incompatible site at webcompat.com, and optionally upload a screenshot.",
+  "author": "webcompat.com contributors",
+  "scripts": {
+    "eslint": "node .eslint.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions/issues"
+  },
+  "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "colors": "^1.1.2"
+  },
+  "license": "MPL-2.0"
+}
