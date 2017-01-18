@@ -5,8 +5,7 @@
   "author": "webcompat.com contributors",
   "main": "background.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint -c ../.eslintrc --fix background.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

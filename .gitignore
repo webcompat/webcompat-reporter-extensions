@@ -5,3 +5,4 @@ bin/
 */node_modules/
 *.log
 */*.log
+node_modules
