@@ -12,6 +12,14 @@ Find the packaged extension in the `bin` directory, and install in your browser 
 
 Links to extension sites coming soon.
 
+### Linting
+
+Before you commit your code please run the npm run-script `eslint` in order to ensure that it is linted accordingly to the lint rules followed across the repository. To know more about the command please type
+
+```shell
+npm run eslint --info
+```
+
 ### Bookmarklet
 
 Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Make one of those however you make them normally, and copy and paste the following code:
