@@ -30,11 +30,12 @@ function reportIssue(tab) {
 
 function enableOrDisable(tabId, changeInfo, tab) {
   function isReportableURL(url) {
-    return url && !(url.startsWith("about")     ||
-                    url.startsWith("chrome")    ||
-                    url.startsWith("file")      ||
-                    url.startsWith("resource")  ||
-                    url.startsWith("view-source"));
+    if (!url) {
+      return false;
+    }
+
+    let protocol = new URL(url).protocol;
+    return ["http:", "https:"].includes(protocol);
   }
 
   if (changeInfo.status == "complete" && isReportableURL(tab.url)) {
