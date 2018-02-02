@@ -3,4 +3,4 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // add a class to hide the download link when the add-on is installed.
-document.querySelector('.js-Navbar-link').classList.add('is-hidden');
+document.querySelector(".js-Navbar-link").classList.add("is-hidden");
