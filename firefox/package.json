@@ -5,8 +5,9 @@
   "author": "webcompat.com contributors",
   "main": "background.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint -c ../.eslintrc --fix background.js"
+    "eslint": "eslint --ignore-path ../.eslintignore -c ../.eslintrc . --cache",
+    "run": "web-ext run",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,12 @@
   },
   "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
   "devDependencies": {
-    "jpm": "^1.1.4",
-    "eslint": "^3.4.0",
-    "web-ext": "^1.1.0"
+    "eslint": "4.16.0",
+    "web-ext": "^2.4.0",
+    "webpack": "^3.10.0",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-prettier": "^2.0.1",
+    "prettier": "1.10.2"
   },
   "license": "MPL-2.0"
 }
