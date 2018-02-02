@@ -3,5 +3,10 @@
 *.xpi
 bin/
 */node_modules/
+*/web-ext-artifacts/
 *.log
 */*.log
+package-lock.json
+#ignore this, because it will be generated
+*/background.js
+.eslintcache
