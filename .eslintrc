@@ -1,19 +1,16 @@
 {
   "env": {
     "browser": true,
+    "node": true,
     "es6": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
   "globals": {
-    chrome: true,
-    content: true,
-    Components: true,
-    XPCOMUtils: true,
-    CustomizableUI: true,
-    Services: true,
-    addMessageListener: true,
-    removeMessageListener: true,
-    sendAsyncMessage: true
+    "chrome": true,
+    "module": true
   },
   "rules": {
     "comma-dangle": 0,
