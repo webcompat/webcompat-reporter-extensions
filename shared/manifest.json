@@ -3,12 +3,6 @@
   "name": "webcompat.com reporter",
   "description": "Report website compatibility issues at webcompat.com",
   "version": "0.5.0",
-  "applications": {
-    "gecko": {
-      "id": "jid1-mjpB54bRzP9Zxw@jetpack",
-      "strict_min_version": "49.0a1"
-    }
-  },
   "background": {
     "scripts": ["background.js"]
   },
@@ -34,7 +28,7 @@
   },
   "browser_action": {
     "default_icon": {
-      "19": "icon32.png",
+      "16": "icon32.png",
       "32": "icon32.png",
       "48": "icon48.png",
       "64": "icon64.png",
