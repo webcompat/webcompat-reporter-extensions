@@ -1,0 +1,32 @@
+{
+  "name": "webcompat-reporter-addon",
+  "version": "0.5.0",
+  "description": "WebCompat reporter add-ons.",
+  "author": "webcompat.com contributors",
+  "scripts": {
+    "eslint": "eslint --ignore-path .eslintignore -c .eslintrc . --cache",
+    "run:firefox": "web-ext run --source-dir=dist/firefox",
+    "package:firefox": "web-ext build --source-dir=dist/firefox --artifacts-dir=bin",
+    "build:firefox": "webpack --config firefox/webpack.config.js",
+    "build:chrome": "webpack --config chrome/webpack.config.js",
+    "build:opera": "webpack --config opera/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/webcompat/webcompat-reporter-extensions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webcompat/webcompat-reporter-extensions/issues"
+  },
+  "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.3.1",
+    "eslint": "4.16.0",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-prettier": "^2.0.1",
+    "prettier": "1.10.2",
+    "web-ext": "^2.4.0",
+    "webpack": "^3.10.0"
+  },
+  "license": "MPL-2.0"
+}
