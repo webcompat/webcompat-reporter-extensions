@@ -2,6 +2,22 @@
 *.cer
 *.xpi
 bin/
-*/node_modules/
+**/node_modules/
+**/web-ext-artifacts/
 *.log
-*/*.log
+**/*.log
+package-lock.json
+.eslintcache
+
+
+# ignore these, because they will be generated or moved.
+**/background.js
+**/content.js
+**/manifest.json
+**/*.png
+dist/
+
+# except, we care about the source shared files.
+!shared/content.js
+!shared/*.png
+!shared/manifest.json

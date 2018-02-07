@@ -20,6 +20,20 @@ Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.o
 javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())
 ```
 
+### Building
+
+To build the Firefox, Chrome and Opera web extension addons, first, install npm dependencies by running the following command from the project root:
+
+`npm install`
+
+The following commands will build the addons, so they can be packaged for testing or distribution:
+
+```
+npm run build:firefox
+npm run build:chrome
+npm run build:opera
+```
+
 ### Privacy
 
 By clicking on the extension button, the user asks the browser to send the URL of a website to webcompat.com (in order to report an issue) in a new tab. No information is collected besides that which gets submitted by the user as a bug report.
