@@ -21,3 +21,4 @@ dist/
 !shared/content.js
 !shared/*.png
 !shared/manifest.json
+!firefox-mobile/manifest.json
