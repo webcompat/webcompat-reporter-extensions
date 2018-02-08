@@ -14,8 +14,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: "shared/content.js"
-        // to: defaults to output directory
+        from: "shared/content.js",
+        to: "./dist/firefox-mobile/content.js"
       },
       {
         from: "shared/*.png",
