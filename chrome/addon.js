@@ -6,4 +6,4 @@ import initAddon from "../shared/base.js";
 
 const REPORTER_ID = "addon-reporter-chrome";
 
-initAddon(REPORTER_ID);
+initAddon(REPORTER_ID, { createContextMenu: true });

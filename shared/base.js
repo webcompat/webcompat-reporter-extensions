@@ -45,22 +45,27 @@ function reportIssue(tab, reporterID) {
   });
 }
 
-function setupListeners(reporterID) {
+function setupListeners(reporterID, options) {
   chrome.tabs.onCreated.addListener(tab => {
     // disable all new tabs until they've loaded and we know
     // they have reportable URLs
     chrome.browserAction.disable(tab.tabId);
   });
   chrome.tabs.onUpdated.addListener(enableOrDisable);
-  chrome.contextMenus.onClicked.addListener(tab =>
-    reportIssue(tab, reporterID)
-  );
   chrome.browserAction.onClicked.addListener(tab =>
     reportIssue(tab, reporterID)
   );
+
+  if (options && options.createContextMenu) {
+    chrome.contextMenus.onClicked.addListener(tab =>
+      reportIssue(tab, reporterID)
+    );
+  }
 }
 
-export default function initAddon(reporterID) {
-  createContextMenu();
-  setupListeners(reporterID);
+export default function initAddon(reporterID, options = false) {
+  if (options && options.createContextMenu) {
+    createContextMenu();
+  }
+  setupListeners(reporterID, options);
 }
