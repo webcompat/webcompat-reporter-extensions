@@ -6,5 +6,14 @@ import initAddon from "../shared/base.js";
 
 const REPORTER_ID = "addon-reporter-firefox-mobile";
 
-// contextMenu API is not supported in Firefox for Android (yet?)
-initAddon(REPORTER_ID, { createContextMenu: false });
+browser.runtime.getBrowserInfo().then(function({ version }) {
+  if (version.includes("a")) {
+    // Uninstall, without prompts, because this addon makes no sense on Nightly
+    // (it's built-in by default)
+    browser.management.uninstallSelf();
+  } else {
+    // Proceed if we're not running on Nightly.
+    // Note: Fennec doesn't support context menu APIs
+    initAddon(REPORTER_ID, { createContextMenu: false });
+  }
+});
