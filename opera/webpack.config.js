@@ -5,6 +5,7 @@
 // webpack config to bundle the Opera web extension from shared sources.
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const version = require("../package.json").version;
 
 module.exports = {
   entry: "./opera/addon.js",
@@ -23,7 +24,13 @@ module.exports = {
       },
       {
         from: "shared/manifest.json",
-        to: "./dist/opera/[name].json"
+        to: "./dist/opera/[name].json",
+        transform: function(content, path) {
+          let manifest = JSON.parse(content);
+          // Derive addon versioning from package.json
+          manifest["version"] = version;
+          return JSON.stringify(manifest, null, 2);
+        }
       }
     ])
   ]

@@ -5,6 +5,7 @@
 // webpack config to bundle the Chrome web extension from shared sources.
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const version = require("../package.json").version;
 
 module.exports = {
   entry: "./chrome/addon.js",
@@ -23,7 +24,13 @@ module.exports = {
       },
       {
         from: "shared/manifest.json",
-        to: "./dist/chrome/[name].json"
+        to: "./dist/chrome/[name].json",
+        transform: function(content, path) {
+          let manifest = JSON.parse(content);
+          // Derive addon versioning from package.json
+          manifest["version"] = version;
+          return JSON.stringify(manifest, null, 2);
+        }
       }
     ])
   ]
