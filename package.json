@@ -1,6 +1,6 @@
 {
   "name": "webcompat-reporter-addon",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "WebCompat reporter add-ons.",
   "author": "webcompat.com contributors",
   "scripts": {
