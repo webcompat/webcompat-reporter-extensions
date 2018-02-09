@@ -5,9 +5,12 @@
   "author": "webcompat.com contributors",
   "scripts": {
     "eslint": "eslint --ignore-path .eslintignore -c .eslintrc . --cache",
-    "run:firefox": "web-ext run --source-dir=dist/firefox",
+    "firefox": "web-ext run --source-dir=dist/firefox",
+    "fennec": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.firefox",
+    "fennec-nightly": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.fennec_aurora",
     "package:firefox": "web-ext build --source-dir=dist/firefox --artifacts-dir=bin",
     "build:firefox": "webpack --config firefox/webpack.config.js",
+    "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
     "build:opera": "webpack --config opera/webpack.config.js"
   },

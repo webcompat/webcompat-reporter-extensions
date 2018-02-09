@@ -30,9 +30,35 @@ The following commands will build the addons, so they can be packaged for testin
 
 ```
 npm run build:firefox
+npm run build:fennec
 npm run build:chrome
 npm run build:opera
 ```
+
+The following commands will run the addons in their target browser:
+
+```
+npm run firefox
+```
+
+To run the addon in Firefox for Android, use the following commands:
+
+```
+npm run fennec
+npm run fennec-nightly
+```
+
+Note: it's necessary to pass the device ID as an argument for these commands:
+
+```
+$ adb devices
+> ABCDEFGHIJKLMNOP
+# Note the double dashes, they're required.
+$ npm run fennec -- --android-device=ABCDEFGHIJKLMNOP
+$ npm run fennec-nightly -- --android-device=ABCDEFGHIJKLMNOP
+````
+
+
 
 ### Privacy
 

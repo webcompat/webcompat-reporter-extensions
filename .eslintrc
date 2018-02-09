@@ -9,12 +9,14 @@
     "plugin:prettier/recommended"
   ],
   "globals": {
+    "browser": true,
     "chrome": true,
     "module": true
   },
   "rules": {
     "comma-dangle": 0,
     "curly": [2, "all"],
+    "eol-last": "error",
     "eqeqeq": [2, "smart"],
     "indent": [2, 2],
     "keyword-spacing": 2,
