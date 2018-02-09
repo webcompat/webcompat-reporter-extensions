@@ -9,6 +9,7 @@
     "plugin:prettier/recommended"
   ],
   "globals": {
+    "browser": true,
     "chrome": true,
     "module": true
   },
