@@ -12,7 +12,8 @@
     "build:firefox": "webpack --config firefox/webpack.config.js",
     "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
-    "build:opera": "webpack --config opera/webpack.config.js"
+    "build:opera": "webpack --config opera/webpack.config.js",
+    "test": "intern"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
     "eslint": "4.16.0",
     "eslint-config-prettier": "^1.7.0",
     "eslint-plugin-prettier": "^2.0.1",
+    "file-exists": "^5.0.1",
+    "intern": "^4.1.5",
     "prettier": "1.10.2",
     "web-ext": "^2.4.0",
     "webpack": "^3.10.0"
