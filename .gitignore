@@ -8,6 +8,7 @@ bin/
 **/*.log
 package-lock.json
 .eslintcache
+.vscode/
 
 
 # ignore these, because they will be generated or moved.
