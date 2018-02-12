@@ -1,6 +1,8 @@
 # Webcompat.com Reporter browser extensions
 
-Browser extensions for Chrome, Firefox (29+), Opera, and Safari that allow users to click on a button in the browser chrome to report a web compatibility issue at webcompat.com.
+[![Build Status](https://travis-ci.org/webcompat/webcompat-reporter-extensions.svg?branch=master)](https://travis-ci.org/webcompat/webcompat-reporter-extensions)
+
+Browser extensions for Chrome, Firefox, Opera, and Safari that allow users to click on a button in the browser chrome to report a web compatibility issue at webcompat.com.
 
 *(If someone knows how to build something similar for Internet Explorer, please file an issue)
 
