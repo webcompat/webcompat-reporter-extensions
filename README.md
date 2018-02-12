@@ -58,7 +58,11 @@ $ npm run fennec -- --android-device=ABCDEFGHIJKLMNOP
 $ npm run fennec-nightly -- --android-device=ABCDEFGHIJKLMNOP
 ````
 
+### Running tests
 
+Tests can be run with by running the following npm script:
+
+`npm run test`
 
 ### Privacy
 

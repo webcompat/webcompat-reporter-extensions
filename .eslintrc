@@ -11,6 +11,7 @@
   "globals": {
     "browser": true,
     "chrome": true,
+    "intern": true,
     "module": true
   },
   "rules": {
