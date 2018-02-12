@@ -13,7 +13,8 @@
     "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
     "build:opera": "webpack --config opera/webpack.config.js",
-    "test": "intern"
+    "test": "intern",
+    "clean": "shx rm -rf dist/"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "file-exists": "^5.0.1",
     "intern": "^4.1.5",
     "prettier": "1.10.2",
+    "shx": "^0.2.2",
     "web-ext": "^2.4.0",
     "webpack": "^3.10.0"
   },
