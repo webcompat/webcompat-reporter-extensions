@@ -5,9 +5,11 @@ const { registerSuite } = intern.getInterface("object");
 const { assert } = intern.getPlugin("chai");
 
 const helpers = require("./lib/helpers");
+const shell = require("shelljs");
 
 registerSuite("manifest.json creation", {
   before() {
+    shell.rm("-rf", "dist/");
     return helpers.compileWebpack();
   },
   tests: {

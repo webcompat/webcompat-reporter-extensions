@@ -6,9 +6,11 @@ const { assert } = intern.getPlugin("chai");
 
 const fileExists = require("file-exists");
 const helpers = require("./lib/helpers");
+const shell = require("shelljs");
 
 registerSuite("dist output", {
   before() {
+    shell.rm("-rf", "dist/");
     return helpers.compileWebpack();
   },
   tests: {

@@ -32,6 +32,7 @@
     "file-exists": "^5.0.1",
     "intern": "^4.1.5",
     "prettier": "1.10.2",
+    "shelljs": "^0.8.1",
     "shx": "^0.2.2",
     "web-ext": "^2.4.0",
     "webpack": "^3.10.0"
