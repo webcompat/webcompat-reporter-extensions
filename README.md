@@ -19,7 +19,7 @@ Links to extension sites coming soon.
 Another way to easily report issues is via a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). Make one of those however you make them normally, and copy and paste the following code:
 
 ```
-javascript:(function(){location.href="http://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())
+javascript:(function(){location.href="https://webcompat.com/?open=1&url="+encodeURIComponent(location.href)}())
 ```
 
 ### Building

@@ -2,7 +2,6 @@
   "manifest_version": 2,
   "name": "webcompat.com reporter",
   "description": "Report website compatibility issues at webcompat.com",
-  "version": "0.5.0",
   "background": {
     "scripts": ["background.js"]
   },

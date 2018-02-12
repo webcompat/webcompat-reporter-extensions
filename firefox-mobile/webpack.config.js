@@ -5,6 +5,7 @@
 // webpack config to bundle the Firefox for Android web extension from shared sources.
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const version = require("../package.json").version;
 
 module.exports = {
   entry: "./firefox-mobile/addon.js",
@@ -27,6 +28,8 @@ module.exports = {
         transform: function(content, path) {
           // Add Firefox-specific bits to the manifest.json
           let manifest = JSON.parse(content);
+          // Derive addon versioning from package.json
+          manifest["version"] = version;
           manifest["applications"] = {
             gecko: {
               id: "webcompat-reporter-for-mobile@webcompat.com",

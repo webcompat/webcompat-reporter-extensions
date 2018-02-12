@@ -5,6 +5,7 @@
 // webpack config to bundle the Firefox web extension from shared sources.
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const version = require("../package.json").version;
 
 module.exports = {
   entry: "./firefox/addon.js",
@@ -25,8 +26,10 @@ module.exports = {
         from: "shared/manifest.json",
         to: "./dist/firefox/[name].json",
         transform: function(content, path) {
-          // Add Firefox-specific bits to the manifest.json
           let manifest = JSON.parse(content);
+          // Derive addon versioning from package.json
+          manifest["version"] = version;
+          // Add Firefox-specific bits to the manifest.json
           manifest["applications"] = {
             gecko: {
               id: "jid1-mjpB54bRzP9Zxw@jetpack",
