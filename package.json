@@ -32,7 +32,6 @@
     "eslint-config-prettier": "^1.7.0",
     "eslint-plugin-prettier": "^2.0.1",
     "file-exists": "^5.0.1",
-    "foo": "0.0.7",
     "intern": "^4.1.5",
     "prettier": "1.10.2",
     "shelljs": "^0.8.1",
