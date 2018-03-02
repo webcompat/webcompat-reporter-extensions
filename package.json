@@ -30,6 +30,7 @@
     "crx": "^3.2.1",
     "eslint": "4.18.1",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.0.1",
     "file-exists": "^5.0.1",
     "intern": "^4.1.5",
     "prettier": "1.11.1",
