@@ -9,7 +9,7 @@
     "fennec": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.firefox",
     "fennec-nightly": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.fennec_aurora",
     "package:firefox": "web-ext build --source-dir=dist/firefox --artifacts-dir=bin",
-    "package:chrome": "crx pack dist/chrome -o bin/webcompat-reporter-chrome.crx",
+    "package:chrome": "npm run build:chrome && crx pack dist/chrome -o bin/webcompat-reporter-chrome.crx",
     "build:firefox": "webpack --config firefox/webpack.config.js",
     "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
@@ -27,10 +27,12 @@
   "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
   "devDependencies": {
     "copy-webpack-plugin": "^4.3.1",
+    "crx": "^3.2.1",
     "eslint": "4.16.0",
     "eslint-config-prettier": "^1.7.0",
     "eslint-plugin-prettier": "^2.0.1",
     "file-exists": "^5.0.1",
+    "foo": "0.0.7",
     "intern": "^4.1.5",
     "prettier": "1.10.2",
     "shelljs": "^0.8.1",
@@ -39,7 +41,5 @@
     "webpack": "^3.10.0"
   },
   "license": "MPL-2.0",
-  "dependencies": {
-    "crx": "^3.2.1"
-  }
+  "dependencies": {}
 }
