@@ -37,6 +37,10 @@ For example,
 
 `Fixes #83. Add TravisCI integration.`
 
+Be sure to request a reviewer with the following comment, @miketaylr is a good person to start with!
+
+`r? @miketaylr`
+
 ## Coding Style
 
 For JS, this project uses [Prettier](https://prettier.io/) to format everything (via eslint integration). [Why?](https://prettier.io/docs/en/why-prettier.html)
