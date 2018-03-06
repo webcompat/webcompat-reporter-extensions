@@ -9,6 +9,7 @@
     "fennec": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.firefox",
     "fennec-nightly": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.fennec_aurora",
     "package:firefox": "web-ext build --source-dir=dist/firefox --artifacts-dir=bin",
+    "package:fennec": "web-ext build --source-dir=dist/firefox-mobile --artifacts-dir=bin",
     "package:chrome": "npm run build:chrome && crx pack dist/chrome -o bin/webcompat-reporter-chrome.crx",
     "build:firefox": "webpack --config firefox/webpack.config.js",
     "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
