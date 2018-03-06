@@ -38,11 +38,5 @@
     "shx": "^0.2.2",
     "web-ext": "^2.4.0",
     "webpack": "^3.10.0"
-  },
-  "license": "MPL-2.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {}
+  }
 }
