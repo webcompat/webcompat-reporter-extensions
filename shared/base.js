@@ -29,7 +29,7 @@ function enableOrDisable(tabId, changeInfo, tab) {
   }
 }
 
-function reportIssue(tab, reporterID) {
+function reportIssue(tab, reporterID, tabId) {
   chrome.tabs.captureVisibleTab({ format: "png" }, function(res) {
     let screenshotData = res;
     chrome.tabs.query({ currentWindow: true, active: true }, function(tab) {
@@ -37,7 +37,7 @@ function reportIssue(tab, reporterID) {
         tab[0].url
       )}&src=${reporterID}`;
       chrome.tabs.create({ url: newTabUrl }, function(tab) {
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tabId, {
           code: `window.postMessage("${screenshotData}", "*")`
         });
       });
