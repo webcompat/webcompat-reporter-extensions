@@ -53,12 +53,12 @@ function setupListeners(reporterID, options) {
   });
   chrome.tabs.onUpdated.addListener(enableOrDisable);
   chrome.browserAction.onClicked.addListener(tab =>
-    reportIssue(tab, reporterID, tabId)
+    reportIssue(tab, reporterID, tab.tabId)
   );
 
   if (options && options.createContextMenu) {
     chrome.contextMenus.onClicked.addListener(tab =>
-      reportIssue(tab, reporterID, tabId)
+      reportIssue(tab, reporterID, tab.tabId)
     );
   }
 }
