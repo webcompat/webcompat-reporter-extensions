@@ -29,7 +29,7 @@ function enableOrDisable(tabId, changeInfo, tab) {
   }
 }
 
-function reportIssue(tab, reporterID, tabId) {
+function reportIssue(tab, reporterID) {
   chrome.tabs.captureVisibleTab({ format: "png" }, function(res) {
     let screenshotData = res;
     chrome.tabs.query({ currentWindow: true, active: true }, function(tab) {
@@ -37,7 +37,7 @@ function reportIssue(tab, reporterID, tabId) {
         tab[0].url
       )}&src=${reporterID}`;
       chrome.tabs.create({ url: newTabUrl }, function(tab) {
-        chrome.tabs.executeScript(tabId, {
+        chrome.tabs.executeScript(tab.id, {
           code: `window.postMessage("${screenshotData}", "*")`
         });
       });
@@ -53,12 +53,12 @@ function setupListeners(reporterID, options) {
   });
   chrome.tabs.onUpdated.addListener(enableOrDisable);
   chrome.browserAction.onClicked.addListener(tab =>
-    reportIssue(tab, reporterID, tab.id)
+    reportIssue(tab, reporterID)
   );
 
   if (options && options.createContextMenu) {
     chrome.contextMenus.onClicked.addListener(tab =>
-      reportIssue(tab, reporterID, tab.id)
+      reportIssue(tab, reporterID)
     );
   }
 }
