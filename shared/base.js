@@ -12,16 +12,16 @@ function createContextMenu() {
   });
 }
 
-function enableOrDisable(tabId, changeInfo, tab) {
-  function isReportableURL(url) {
+function isReportableURL(url) {
     if (!url) {
       return false;
     }
 
     let protocol = new URL(url).protocol;
     return ["http:", "https:"].includes(protocol);
-  }
+}
 
+function enableOrDisable(tabId, changeInfo, tab) {
   if (changeInfo.status === "loading" && isReportableURL(tab.url)) {
     chrome.browserAction.enable(tabId);
   } else if (changeInfo.status === "loading" && !isReportableURL(tab.url)) {
