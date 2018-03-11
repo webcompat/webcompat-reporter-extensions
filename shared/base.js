@@ -37,7 +37,7 @@ function reportIssue(tab, reporterID) {
         tab[0].url
       )}&src=${reporterID}`;
       chrome.tabs.create({ url: newTabUrl }, function(tab) {
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tab.id, {
           code: `window.postMessage("${screenshotData}", "*")`
         });
       });
