@@ -10,21 +10,21 @@ const version = require("../package.json").version;
 module.exports = {
   entry: "./chrome/addon.js",
   output: {
-    filename: "./dist/chrome/background.js"
+    filename: "../dist/chrome/background.js"
   },
   plugins: [
     new CopyWebpackPlugin([
       {
         from: "shared/content.js",
-        to: "./dist/chrome/content.js"
+        to: "../dist/chrome/content.js"
       },
       {
         from: "shared/*.png",
-        to: "./dist/chrome/[name].[ext]"
+        to: "../dist/chrome/[name].[ext]"
       },
       {
         from: "shared/manifest.json",
-        to: "./dist/chrome/[name].json",
+        to: "../dist/chrome/[name].json",
         transform: function(content, path) {
           let manifest = JSON.parse(content);
           // Derive addon versioning from package.json

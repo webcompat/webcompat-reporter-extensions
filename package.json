@@ -37,7 +37,8 @@
     "shelljs": "^0.8.1",
     "shx": "^0.2.2",
     "web-ext": "^2.4.0",
-    "webpack": "^3.10.0"
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.10"
   },
   "license": "MPL-2.0"
 }
