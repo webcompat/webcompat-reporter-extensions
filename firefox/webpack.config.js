@@ -10,21 +10,21 @@ const version = require("../package.json").version;
 module.exports = {
   entry: "./firefox/addon.js",
   output: {
-    filename: "./dist/firefox/background.js"
+    filename: "../dist/firefox/background.js"
   },
   plugins: [
     new CopyWebpackPlugin([
       {
         from: "shared/content.js",
-        to: "./dist/firefox/content.js"
+        to: "../dist/firefox/content.js"
       },
       {
         from: "shared/*.png",
-        to: "./dist/firefox/[name].[ext]"
+        to: "../dist/firefox/[name].[ext]"
       },
       {
         from: "shared/manifest.json",
-        to: "./dist/firefox/[name].json",
+        to: "../dist/firefox/[name].json",
         transform: function(content, path) {
           let manifest = JSON.parse(content);
           // Derive addon versioning from package.json

@@ -10,21 +10,21 @@ const version = require("../package.json").version;
 module.exports = {
   entry: "./opera/addon.js",
   output: {
-    filename: "./dist/opera/background.js"
+    filename: "../dist/opera/background.js"
   },
   plugins: [
     new CopyWebpackPlugin([
       {
         from: "shared/content.js",
-        to: "./dist/opera/content.js"
+        to: "../dist/opera/content.js"
       },
       {
         from: "shared/*.png",
-        to: "./dist/opera/[name].[ext]"
+        to: "../dist/opera/[name].[ext]"
       },
       {
         from: "shared/manifest.json",
-        to: "./dist/opera/[name].json",
+        to: "../dist/opera/[name].json",
         transform: function(content, path) {
           let manifest = JSON.parse(content);
           // Derive addon versioning from package.json

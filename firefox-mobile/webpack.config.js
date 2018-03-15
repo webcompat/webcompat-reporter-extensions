@@ -10,21 +10,21 @@ const version = require("../package.json").version;
 module.exports = {
   entry: "./firefox-mobile/addon.js",
   output: {
-    filename: "./dist/firefox-mobile/background.js"
+    filename: "../dist/firefox-mobile/background.js"
   },
   plugins: [
     new CopyWebpackPlugin([
       {
         from: "shared/content.js",
-        to: "./dist/firefox-mobile/content.js"
+        to: "../dist/firefox-mobile/content.js"
       },
       {
         from: "shared/*.png",
-        to: "./dist/firefox-mobile/[name].[ext]"
+        to: "../dist/firefox-mobile/[name].[ext]"
       },
       {
         from: "./firefox-mobile/manifest.json",
-        to: "./dist/firefox-mobile/manifest.json",
+        to: "../dist/firefox-mobile/manifest.json",
         transform: function(content, path) {
           // Add Firefox-specific bits to the manifest.json
           let manifest = JSON.parse(content);
