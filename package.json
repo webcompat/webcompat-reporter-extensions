@@ -6,6 +6,7 @@
   "scripts": {
     "eslint": "eslint --ignore-path .eslintignore -c .eslintrc . --cache",
     "firefox": "web-ext run --source-dir=dist/firefox",
+    "chrome": "node ./chrome/run.js",
     "fennec": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.firefox",
     "fennec-nightly": "web-ext run --target=firefox-android --source-dir=dist/firefox-mobile --firefox-apk=org.mozilla.fennec_aurora",
     "package:firefox": "web-ext build --source-dir=dist/firefox --artifacts-dir=bin --overwrite-dest",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/webcompat/webcompat-reporter-extensions#readme",
   "devDependencies": {
+    "chrome-launch": "^1.1.4",
     "copy-webpack-plugin": "^4.3.1",
     "crx": "^3.2.1",
     "eslint": "4.18.1",
