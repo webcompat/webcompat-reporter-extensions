@@ -12,7 +12,7 @@ function createContextMenu() {
   });
 }
 
-function isReportableURL(url) {
+export function isReportableURL(url) {
   if (!url) {
     return false;
   }
