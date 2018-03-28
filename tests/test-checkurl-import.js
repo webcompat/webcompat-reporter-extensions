@@ -1,13 +1,12 @@
 /* Any copyright is dedicated to the Public Domain.
  * http://creativecommons.org/publicdomain/zero/1.0/ */
 
-import isReportableURL from "../shared/checkurl.js";
+// import isReportableURL from "../shared/checkurl.js";
+
+const { isReportableURL } = require("../shared/checkurl");
 
 const { registerSuite } = intern.getInterface("object");
 const { assert } = intern.getPlugin("chai");
-
-// const helpers = require("./lib/helpers");
-// const shell = require("shelljs");
 
 registerSuite("isReportableURL module", {
   before() {
