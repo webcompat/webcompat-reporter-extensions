@@ -2,13 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+const { URL } = require("url");
+
 function isReportableURL(url) {
-  if (!url) {
+  try {
+    let protocol = new URL(url).protocol;
+    return ["http:", "https:"].includes(protocol);
+  } catch (error) {
     return false;
   }
-
-  let protocol = new URL(url).protocol;
-  return ["http:", "https:"].includes(protocol);
 }
 
 module.exports = {
