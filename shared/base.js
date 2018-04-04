@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import isReportableURL from "../shared/reportableUrl.js";
+
 const PREFIX = "https://webcompat.com/issues/new?url=";
 
 function createContextMenu() {
@@ -13,15 +15,6 @@ function createContextMenu() {
 }
 
 function enableOrDisable(tabId, changeInfo, tab) {
-  function isReportableURL(url) {
-    if (!url) {
-      return false;
-    }
-
-    let protocol = new URL(url).protocol;
-    return ["http:", "https:"].includes(protocol);
-  }
-
   if (changeInfo.status === "loading" && isReportableURL(tab.url)) {
     chrome.browserAction.enable(tabId);
   } else if (changeInfo.status === "loading" && !isReportableURL(tab.url)) {
