@@ -46,5 +46,5 @@
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10"
   },
-  "license": "MPL-2.0"
+  "license": "MPL-2.0",
 }
