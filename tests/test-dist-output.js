@@ -1,12 +1,12 @@
 /* Any copyright is dedicated to the Public Domain.
  * http://creativecommons.org/publicdomain/zero/1.0/ */
 
+import fileExists from "file-exists";
+import helpers from "./lib/helpers.js";
+import shell from "shelljs";
+
 const { registerSuite } = intern.getInterface("object");
 const { assert } = intern.getPlugin("chai");
-
-const fileExists = require("file-exists");
-const helpers = require("./lib/helpers");
-const shell = require("shelljs");
 
 registerSuite("dist output", {
   before() {

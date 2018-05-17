@@ -2,11 +2,14 @@
  * http://creativecommons.org/publicdomain/zero/1.0/ */
 
 const webpack = require("webpack");
+// import webpack from "webpack";
 
 /*
   Returns a promise that resolves once webpack has compiled all the addon
   configs have been built.
 */
+// export default function
+
 function compileWebpack() {
   return new Promise((resolve, reject) => {
     const configs = ["chrome", "firefox", "firefox-mobile", "opera"].map(item =>
