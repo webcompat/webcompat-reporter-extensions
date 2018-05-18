@@ -40,8 +40,6 @@
     "prettier": "1.11.1",
     "shelljs": "^0.8.1",
     "shx": "^0.2.2",
-    "systemjs": "^0.21.0",
-    "systemjs-plugin-babel": "0.0.25",
     "web-ext": "^2.4.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10"
