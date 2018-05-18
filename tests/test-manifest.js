@@ -1,11 +1,14 @@
 /* Any copyright is dedicated to the Public Domain.
  * http://creativecommons.org/publicdomain/zero/1.0/ */
 
+import helpers from "./lib/helpers.js";
+import shell from "shelljs";
+
 const { registerSuite } = intern.getInterface("object");
 const { assert } = intern.getPlugin("chai");
 
-const helpers = require("./lib/helpers");
-const shell = require("shelljs");
+// const helpers = require("./lib/helpers");
+// const shell = require("shelljs");
 
 registerSuite("manifest.json creation", {
   before() {
