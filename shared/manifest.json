@@ -34,5 +34,6 @@
       "128": "icon128.png"
     },
     "default_title": "Report Site Issue"
-  }
+  },
+  "default_locale": "en"
 }

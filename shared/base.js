@@ -9,7 +9,7 @@ const PREFIX = "https://webcompat.com/issues/new?url=";
 function createContextMenu() {
   chrome.contextMenus.create({
     id: "webcompat-contextmenu",
-    title: "Report site issue",
+    title: chrome.i18n.getMessage("contextMenuTitle"),
     contexts: ["all"]
   });
 }
