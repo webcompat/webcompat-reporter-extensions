@@ -19,10 +19,6 @@ module.exports = {
         to: "../dist/firefox/_locales/en/messages.json"
       },
       {
-        from: "shared/_locales/it/messages.json",
-        to: "../dist/firefox/_locales/it/messages.json"
-      },
-      {
         from: "shared/content.js",
         to: "../dist/firefox/content.js"
       },

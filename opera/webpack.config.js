@@ -19,10 +19,6 @@ module.exports = {
         to: "../dist/opera/_locales/en/messages.json"
       },
       {
-        from: "shared/_locales/it/messages.json",
-        to: "../dist/opera/_locales/it/messages.json"
-      },
-      {
         from: "shared/content.js",
         to: "../dist/opera/content.js"
       },
