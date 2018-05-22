@@ -27,7 +27,7 @@ module.exports = {
         to: "../dist/firefox-mobile/[name].[ext]"
       },
       {
-        from: "./firefox-mobile/manifest.json",
+        from: "shared/manifest.json",
         to: "../dist/firefox-mobile/manifest.json",
         transform: function(content, path) {
           // Add Firefox-specific bits to the manifest.json
