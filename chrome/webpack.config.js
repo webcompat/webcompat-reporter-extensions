@@ -19,10 +19,6 @@ module.exports = {
         to: "../dist/chrome/_locales/en/messages.json"
       },
       {
-        from: "shared/_locales/it/messages.json",
-        to: "../dist/chrome/_locales/it/messages.json"
-      },
-      {
         from: "shared/content.js",
         to: "../dist/chrome/content.js"
       },
