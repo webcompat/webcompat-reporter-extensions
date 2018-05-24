@@ -5,7 +5,7 @@
 // webpack config file to bundle the web extensions from shared sources
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const version = require("../package.json").version;
+const version = require("./package.json").version;
 
 module.exports = function(env) {
   // Get extension platform from webpack env variable. (Can be set to any string.)
