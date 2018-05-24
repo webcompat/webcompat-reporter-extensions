@@ -17,6 +17,7 @@
     "build:fennec": "webpack --config firefox-mobile/webpack.config.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
     "build:opera": "webpack --config opera/webpack.config.js",
+    "build:firefox-mobile": "webpack --env=firefox-mobile",
     "test": "intern",
     "clean": "shx rm -rf dist/"
   },
