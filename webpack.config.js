@@ -17,6 +17,10 @@ module.exports = function(env) {
     plugins: [
       new CopyWebpackPlugin([
         {
+          from: "shared/_locales/",
+          to: `../dist/${env}/_locales/`
+        },
+        {
           from: "shared/content.js",
           to: `../dist/${env}/content.js`
         },
