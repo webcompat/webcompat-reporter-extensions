@@ -14,8 +14,8 @@ registerSuite("dist output", {
     return helpers.compileWebpack();
   },
   tests: {
-    "has shared output"() {
-      // verify dist assets got added
+    "has shared output (single files)"() {
+      // verify single file dist assets got added
       ["chrome", "opera", "firefox-mobile", "firefox"].forEach(browser => {
         [
           "background.js",
@@ -27,7 +27,25 @@ registerSuite("dist output", {
           "manifest.json"
         ].forEach(file => {
           fileExists(`dist/${browser}/${file}`, (err, exists) =>
-            assert.isTrue(exists)
+            assert.isTrue(
+              exists,
+              "all shared single-file assets are included in dist output"
+            )
+          );
+        });
+      });
+    },
+    "has _locales directory with all l18n message files"() {
+      // verify localization directory dist asset was added
+      ["chrome", "opera", "firefox-mobile", "firefox"].forEach(browser => {
+        ["en"].forEach(lang => {
+          fileExists(
+            `dist/${browser}/_locales/${lang}/messages.json`,
+            (err, exists) =>
+              assert.isTrue(
+                exists,
+                "locales directory with all current translations is included in dist output"
+              )
           );
         });
       });
