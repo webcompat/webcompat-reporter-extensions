@@ -22,6 +22,10 @@ function compileWebpack() {
           plugins: [
             new CopyWebpackPlugin([
               {
+                from: "shared/_locales/",
+                to: `../dist/${platform}/_locales/`
+              },
+              {
                 from: "shared/content.js",
                 to: `../dist/${platform}/content.js`
               },
