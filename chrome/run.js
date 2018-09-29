@@ -6,7 +6,7 @@
 
 const chromeLaunch = require("chrome-launch");
 const url = "https://webcompat.com/";
-const extPath = __dirname + "/../dist/chrome";
+const extPath = `${__dirname}/../dist/chrome`;
 const args = [`--load-extension=${extPath}`];
 
 chromeLaunch(url, { args });
