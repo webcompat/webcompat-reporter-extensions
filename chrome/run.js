@@ -6,7 +6,8 @@
 
 const chromeLaunch = require("chrome-launch");
 const url = "https://webcompat.com/";
-const args = ["--load-extension=./dist/chrome"];
+const extPath = `${__dirname}/../dist/chrome`;
+const args = [`--load-extension=${extPath}`];
 
 chromeLaunch(url, { args });
 console.log("A new instance of Chrome should now be open in the background."); // eslint-disable-line no-console
