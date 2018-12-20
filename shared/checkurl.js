@@ -5,6 +5,11 @@
 import { URL } from "url";
 
 export default function isReportableURL(url) {
+  // The browser won't be able to import URL from node, so grab a reference
+  // to window.URL.
+  if (!URL) {
+    URL = window.URL;
+  }
   try {
     let protocol = new URL(url).protocol;
     return ["http:", "https:"].includes(protocol);
