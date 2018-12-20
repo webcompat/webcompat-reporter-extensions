@@ -28,7 +28,7 @@ function reportIssue(tab, reporterID) {
     chrome.tabs.query({ currentWindow: true, active: true }, function(tab) {
       var newTabUrl = `${PREFIX}${encodeURIComponent(
         tab[0].url
-      )}&src=${reporterID}`;
+      )}&src=${reporterID}&utm_source=${reporterID}&utm_campaign=report-site-issue-extension`;
       chrome.tabs.create({ url: newTabUrl }, function(tab) {
         chrome.tabs.executeScript(tab.id, {
           code: `window.postMessage("${screenshotData}", "*")`
