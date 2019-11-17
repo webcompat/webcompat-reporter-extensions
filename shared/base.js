@@ -4,7 +4,7 @@
 
 import isReportableURL from "./checkurl.js";
 
-const PREFIX = "https://webcompat.com/issues/new?url=";
+const PREFIX = "https://webcompat.com/issues/new";
 
 function createContextMenu() {
   chrome.contextMenus.create({
@@ -26,12 +26,28 @@ function reportIssue(tab, reporterID) {
   chrome.tabs.captureVisibleTab({ format: "png" }, function(res) {
     let screenshotData = res;
     chrome.tabs.query({ currentWindow: true, active: true }, function(tab) {
-      var newTabUrl = `${PREFIX}${encodeURIComponent(
-        tab[0].url
-      )}&src=${reporterID}&utm_source=${reporterID}&utm_campaign=report-site-issue-extension`;
-      chrome.tabs.create({ url: newTabUrl }, function(tab) {
+      const json = JSON.stringify({
+        url: tab[0].url,
+        src: reporterID,
+        utm_source: reporterID,
+        utm_campaign: "report-site-issue-extension"
+      });
+
+      chrome.tabs.create({ url: PREFIX }, function(tab) {
         chrome.tabs.executeScript(tab.id, {
-          code: `window.postMessage("${screenshotData}", "*")`
+          runAt: "document_end",
+          code: `
+            async function postMessageData(dataURI, metadata) {
+               const res = await fetch(dataURI);
+               const blob = await res.blob();
+               const data = {
+                 screenshot: blob,
+                 message: metadata
+               };
+               postMessage(data, "*");
+            }
+            postMessageData("${screenshotData}", ${json});
+          `
         });
       });
     });
