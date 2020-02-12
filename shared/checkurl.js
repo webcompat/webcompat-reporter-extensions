@@ -2,18 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { URL } from "url";
-
 export default function isReportableURL(url) {
-  // The browser won't be able to import URL from node, so grab a reference
-  // to window.URL.
-  if (!URL) {
-    URL = window.URL;
-  }
   try {
-    let protocol = new URL(url).protocol;
-    return ["http:", "https:"].includes(protocol);
+    if (url && typeof url == "string") {
+      return ["http:", "https:"].some(protocol => url.startsWith(protocol));
+    }
   } catch (error) {
-    return false;
+    console.log(`isReportableURL error: ${error}`);
   }
+
+  return false;
 }
