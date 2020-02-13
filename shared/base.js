@@ -14,7 +14,18 @@ function createContextMenu() {
   });
 }
 
-function enableOrDisable(tabId, changeInfo, tab) {
+function enableOrDisableOnActive(activeInfo) {
+  const activeId = activeInfo.tabId;
+  chrome.tabs.get(activeId, tab => {
+    if (isReportableURL(tab.url)) {
+      chrome.browserAction.enable(activeId);
+    } else {
+      chrome.browserAction.disable(activeId);
+    }
+  });
+}
+
+function enableOrDisableOnUpdate(tabId, changeInfo, tab) {
   if (changeInfo.status === "loading" && isReportableURL(tab.url)) {
     chrome.browserAction.enable(tabId);
   } else if (changeInfo.status === "loading" && !isReportableURL(tab.url)) {
@@ -60,7 +71,8 @@ function setupListeners(reporterID, options) {
     // they have reportable URLs
     chrome.browserAction.disable(tab.tabId);
   });
-  chrome.tabs.onUpdated.addListener(enableOrDisable);
+  chrome.tabs.onUpdated.addListener(enableOrDisableOnUpdate);
+  chrome.tabs.onActivated.addListener(enableOrDisableOnActive);
   chrome.browserAction.onClicked.addListener(tab =>
     reportIssue(tab, reporterID)
   );
